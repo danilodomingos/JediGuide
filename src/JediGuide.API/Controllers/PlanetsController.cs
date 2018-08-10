@@ -18,5 +18,11 @@ namespace JediGuide.API.Controllers
             var list = new List<Planet>(){ planet };
             return list; 
         }
+
+        [HttpPost]
+        public void Post([FromBody]Planet planet)
+        {
+            
+        }
     }
 }
