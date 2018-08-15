@@ -6,11 +6,12 @@ namespace JediGuide.Service.Interfaces
 {
     public interface IServiceBase<TEntity> where TEntity : BaseEntity
     {
-        void InsertOrUpdate(TEntity t);
+        void Insert(TEntity t);
+        void Update(TEntity t);
         void Delete(int id);
         List<TEntity> GetAll();
         TEntity FindById(int id);
-        TEntity FindBy(Func<TEntity, bool> func);
-        List<TEntity> FindAllBy(Func<TEntity, bool> func);
+        TEntity FindBy(Func<TEntity, bool> where);
+        List<TEntity> FindAllBy(Func<TEntity, bool> where);
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using JediGuide.Data.Repository.Base;
 using JediGuide.Models.Entities.Base;
 using JediGuide.Service.Interfaces;
 
@@ -7,34 +8,46 @@ namespace JediGuide.Service.Base
 {
     public class ServiceBase<TEntity> : IServiceBase<TEntity> where TEntity : BaseEntity
     {
+        private readonly IRepositoryBase<TEntity> repository;
+
+        public ServiceBase(IRepositoryBase<TEntity> repository)
+        {
+            this.repository = repository;
+        }
+
         void IServiceBase<TEntity>.Delete(int id)
         {
-            throw new NotImplementedException();
+            repository.Delete(id);
         }
 
-        List<TEntity> IServiceBase<TEntity>.FindAllBy(Func<TEntity, bool> func)
+        List<TEntity> IServiceBase<TEntity>.FindAllBy(Func<TEntity, bool> where)
         {
-            throw new NotImplementedException();
+            return repository.FindAllBy(where);
         }
 
-        TEntity IServiceBase<TEntity>.FindBy(Func<TEntity, bool> func)
+        TEntity IServiceBase<TEntity>.FindBy(Func<TEntity, bool> where)
         {
-            throw new NotImplementedException();
+            return repository.FindBy(where);
         }
 
         TEntity IServiceBase<TEntity>.FindById(int id)
         {
-            throw new NotImplementedException();
+            return repository.FindById(id);
         }
 
         List<TEntity> IServiceBase<TEntity>.GetAll()
         {
-            throw new NotImplementedException();
+            return repository.GetAll();
         }
 
-        void IServiceBase<TEntity>.InsertOrUpdate(TEntity t)
+        void IServiceBase<TEntity>.Insert(TEntity entity)
         {
-            throw new NotImplementedException();
+            repository.Insert(entity);
+        }
+
+        void IServiceBase<TEntity>.Update(TEntity entity)
+        {
+            repository.Update(entity);
         }
     }
 }

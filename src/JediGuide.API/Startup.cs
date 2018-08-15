@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using JediGuide.DI;
 
 namespace JediGuide.API
 {
@@ -26,6 +27,8 @@ namespace JediGuide.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            RegisterServices(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,6 +45,11 @@ namespace JediGuide.API
 
             app.UseHttpsRedirection();
             app.UseMvc();
+        }
+
+        private static void RegisterServices(IServiceCollection services)
+        {
+            NativeInjectorBootstrap.RegisterServices(services);
         }
     }
 }

@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\JediGuide.Data\JediGuide.Data.csproj" />
     <ProjectReference Include="..\JediGuide.Models\JediGuide.Models.csproj" />
   </ItemGroup>
 
