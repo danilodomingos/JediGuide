@@ -15,6 +15,7 @@ namespace JediGuide.Data.Repository.Base
         public RepositoryBase(JediGuideContext context)
         {
             this.context = context;
+            this.DbSet = this.context.Set<TEntity>();
         }
 
         void IRepositoryBase<TEntity>.Delete(int id)
