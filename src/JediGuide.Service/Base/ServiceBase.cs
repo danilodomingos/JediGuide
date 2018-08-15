@@ -12,12 +12,12 @@ namespace JediGuide.Service.Base
             throw new NotImplementedException();
         }
 
-        List<TEntity> IServiceBase<TEntity>.FindAllBy(Predicate<TEntity> func)
+        List<TEntity> IServiceBase<TEntity>.FindAllBy(Func<TEntity, bool> func)
         {
             throw new NotImplementedException();
         }
 
-        TEntity IServiceBase<TEntity>.FindBy(Predicate<TEntity> func)
+        TEntity IServiceBase<TEntity>.FindBy(Func<TEntity, bool> func)
         {
             throw new NotImplementedException();
         }

@@ -10,7 +10,7 @@ namespace JediGuide.Service.Interfaces
         void Delete(int id);
         List<TEntity> GetAll();
         TEntity FindById(int id);
-        TEntity FindBy(Predicate<TEntity> func);
-        List<TEntity> FindAllBy(Predicate<TEntity> func);
+        TEntity FindBy(Func<TEntity, bool> func);
+        List<TEntity> FindAllBy(Func<TEntity, bool> func);
     }
 }
