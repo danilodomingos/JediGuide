@@ -19,20 +19,13 @@ namespace JediGuide.API.Controllers
         [HttpGet]
         public IEnumerable<Planet> Get()
         {
-            Planet planet = new Planet();
-            planet.Id = 1;
-            planet.Name = "Saturn";
-
-            service.Insert(planet);
-
-            var list = new List<Planet>(){ planet };
-            return list; 
+            return service.GetAll(); 
         }
 
         [HttpPost]
         public void Post([FromBody]Planet planet)
         {
-            
+            service.Insert(planet);
         }
     }
 }
