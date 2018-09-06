@@ -12,6 +12,7 @@
     <ProjectReference Include="..\JediGuide.Models\JediGuide.Models.csproj" />
     <ProjectReference Include="..\JediGuide.Data\JediGuide.Data.csproj" />
     <ProjectReference Include="..\JediGuide.Service\JediGuide.Service.csproj" />
+    <ProjectReference Include="..\JediGuide.SWAPI.Client\JediGuide.SWAPI.Client.csproj" />
   </ItemGroup>
 
 </Project>

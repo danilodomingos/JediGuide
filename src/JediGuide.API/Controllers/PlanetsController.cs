@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using JediGuide.Models.Entities;
 using JediGuide.Service.Interfaces;
+using JediGuide.SWAPI.Client.Service;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JediGuide.API.Controllers
@@ -10,16 +12,20 @@ namespace JediGuide.API.Controllers
     public class PlanetsController
     {
         private readonly IPlanetService service;
+        private readonly SWAPIClient restService;
 
-        public PlanetsController(IPlanetService service)
+        public PlanetsController(IPlanetService service, SWAPIClient restService)
         {
             this.service = service;
+            this.restService = restService;
         }
 
         [HttpGet]
-        public IEnumerable<Planet> Get()
+        public async Task<dynamic> GetAsync()
         {
-            return service.GetAll(); 
+            return await restService.GetFilms();
+            // var teste = await restService.GetFilms();
+            // return service.GetAll(); 
         }
 
         [HttpPost]

@@ -3,7 +3,9 @@ using JediGuide.Data.Repository;
 using JediGuide.Data.Repository.Interfaces;
 using JediGuide.Data.UOW;
 using JediGuide.Service;
+using JediGuide.Service.Base;
 using JediGuide.Service.Interfaces;
+using JediGuide.SWAPI.Client.Service;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace JediGuide.DI
@@ -17,6 +19,7 @@ namespace JediGuide.DI
             services.AddScoped<JediGuideContext>();
 
             services.AddScoped<IPlanetService, PlanetService>();
+            services.AddScoped<SWAPIClient>();
         }
     }
 }
