@@ -20,12 +20,10 @@ namespace JediGuide.API.Controllers
             this.restService = restService;
         }
 
-        [HttpGet]
-        public async Task<dynamic> GetAsync()
+        [HttpGet("{name}")]
+        public async Task<dynamic> Get(string name)
         {
-            return await restService.GetFilms();
-            // var teste = await restService.GetFilms();
-            // return service.GetAll(); 
+            return await restService.GetPlanets(name);
         }
 
         [HttpPost]

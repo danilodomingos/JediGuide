@@ -1,4 +1,4 @@
-namespace JediGuide.SWAPI.Client
+namespace JediGuide.Rest
 {
     public class PaginatorResult<T>
     {

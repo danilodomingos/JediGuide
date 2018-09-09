@@ -4,6 +4,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using JediGuide.Rest;
 using JediGuide.SWAPI.Client.Models;
 using Newtonsoft.Json;
 
@@ -14,8 +15,7 @@ namespace JediGuide.SWAPI.Client.Service
         private readonly HttpClient httpClient;
 
         private const string URI = "https://swapi.co/api/";
-        private const string PLANETS_RESOURCE = "planets";
-        private const string FILMS_RESOURCE = "films";
+        private const string PLANETS_RESOURCE = "planets/?search={0}";
 
         public SWAPIClient()
         {
@@ -27,14 +27,15 @@ namespace JediGuide.SWAPI.Client.Service
                 new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public async Task<PaginatorResult<Planet>> GetPlanetsAsync()
+        public async Task<PaginatorResult<Planet>> GetPlanets(string name)
         {
             HttpResponseMessage response = null;
             var paginator = new PaginatorResult<Planet>();
+            var urlWithParam = string.Format(PLANETS_RESOURCE, name);
 
             try
             {
-                response = await httpClient.GetAsync("planets");
+                response = await httpClient.GetAsync(urlWithParam);
                 if (response.IsSuccessStatusCode)
                 {
                     var dados = await response.Content.ReadAsStringAsync();
@@ -47,31 +48,6 @@ namespace JediGuide.SWAPI.Client.Service
             finally{
                 paginator.StatusCode = (int)response.StatusCode;
             }
-
-            return paginator;
-        }
-
-        public async Task<PaginatorResult<Film>> GetFilms()
-        {
-            HttpResponseMessage response = null;
-            var paginator = new PaginatorResult<Film>();
-
-            try
-            {
-                response = await httpClient.GetAsync("films");
-                if (response.IsSuccessStatusCode)
-                {
-                    var dados = await response.Content.ReadAsStringAsync();
-                    paginator = JsonConvert.DeserializeObject<PaginatorResult<Film>>(dados);
-                }
-            }
-            catch (Exception ex){
-
-            }
-            finally{
-                paginator.StatusCode = (int)response.StatusCode;
-            }
-
 
             return paginator;
         }

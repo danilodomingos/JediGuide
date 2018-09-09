@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace JediGuide.SWAPI.Client.Models
@@ -20,9 +21,10 @@ namespace JediGuide.SWAPI.Client.Models
 
         [JsonProperty("surface_water")]
         public string SurfaceWater { get; set; }
-        public double Population { get; set; }
+        public string Population { get; set; }
         public DateTime Created { get; set; }
         public DateTime Edited { get; set; }
         public string URL { get; set; }
+        public List<string> Films { get; set; }
     }
 }
