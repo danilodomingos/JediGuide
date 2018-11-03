@@ -1,6 +1,6 @@
 using System.IO;
 using JediGuide.Data.Mappings;
-using JediGuide.Models.Entities;
+using JediGuide.Core.Entities;
 using JetBrains.Annotations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;

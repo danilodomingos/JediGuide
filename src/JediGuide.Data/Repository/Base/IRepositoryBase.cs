@@ -1,4 +1,4 @@
-using JediGuide.Models.Entities.Base;
+using JediGuide.Core.Entities.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;

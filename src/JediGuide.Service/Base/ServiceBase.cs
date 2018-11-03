@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using JediGuide.Data.Repository.Base;
-using JediGuide.Models.Entities.Base;
+using JediGuide.Core.Entities.Base;
 using JediGuide.Service.Interfaces;
 
 namespace JediGuide.Service.Base

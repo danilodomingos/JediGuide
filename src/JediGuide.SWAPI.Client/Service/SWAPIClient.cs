@@ -36,6 +36,7 @@ namespace JediGuide.SWAPI.Client.Service
             try
             {
                 response = await httpClient.GetAsync(urlWithParam);
+                
                 if (response.IsSuccessStatusCode)
                 {
                     var dados = await response.Content.ReadAsStringAsync();
@@ -43,9 +44,12 @@ namespace JediGuide.SWAPI.Client.Service
                 }
             }
             catch (Exception ex){
+                var msg = ex.Message;
+                //Implementar Log aqui.
 
             }
             finally{
+
                 paginator.StatusCode = (int)response.StatusCode;
             }
 

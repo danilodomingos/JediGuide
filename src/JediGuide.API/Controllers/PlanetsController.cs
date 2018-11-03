@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using JediGuide.Models.Entities;
-using JediGuide.Service.Interfaces;
+using JediGuide.Application.IServices;
+using JediGuide.Core.Entities;
+using JediGuide.Rest;
 using JediGuide.SWAPI.Client.Service;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,25 +13,32 @@ namespace JediGuide.API.Controllers
     [ApiController]
     public class PlanetsController
     {
-        private readonly IPlanetService service;
-        private readonly SWAPIClient restService;
+        private readonly IPlanetAppService appService;
+        private readonly PageResult pageResult;
 
-        public PlanetsController(IPlanetService service, SWAPIClient restService)
+        public PlanetsController(IPlanetAppService appService)
         {
-            this.service = service;
-            this.restService = restService;
+            this.appService = appService;
         }
 
-        [HttpGet("{name}")]
-        public async Task<dynamic> Get(string name)
-        {
-            return await restService.GetPlanets(name);
-        }
+        // [HttpGet("{name}")]
+        // public async Task<dynamic> Get(string name, string page)
+        // {
+        //     return await restService.GetPlanets(name, page);
+        // }
 
         [HttpPost]
-        public void Post([FromBody]Planet planet)
+        public ActionResult Post([FromBody]Planet planet)
         {
-            service.Insert(planet);
+            try{
+                appService.Insert(planet);
+            }
+            catch(Exception e)
+            {
+
+            }
+
+            return null;
         }
     }
 }

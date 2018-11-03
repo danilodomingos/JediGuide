@@ -5,10 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\JediGuide.Data\JediGuide.Data.csproj"/>
     <ProjectReference Include="..\JediGuide.Core\JediGuide.Core.csproj"/>
     <ProjectReference Include="..\JediGuide.Rest\JediGuide.Rest.csproj"/>
-    <ProjectReference Include="..\JediGuide.SWAPI.Client\JediGuide.SWAPI.Client.csproj"/>
+    <ProjectReference Include="..\JediGuide.Service\JediGuide.Service.csproj"/>
   </ItemGroup>
 
 </Project>

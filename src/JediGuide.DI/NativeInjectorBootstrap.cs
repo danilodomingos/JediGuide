@@ -1,3 +1,5 @@
+using JediGuide.Application.IServices;
+using JediGuide.Application.Services;
 using JediGuide.Data.Context;
 using JediGuide.Data.Repository;
 using JediGuide.Data.Repository.Interfaces;
@@ -13,13 +15,14 @@ namespace JediGuide.DI
     public class NativeInjectorBootstrap
     {
         public static void RegisterServices(IServiceCollection services)
-        {
-            services.AddScoped<IPlanetRepository, PlanetRepository>();
+        {   
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<SWAPIClient>();
             services.AddScoped<JediGuideContext>();
 
+            services.AddScoped<IPlanetAppService, PlanetAppService>();
             services.AddScoped<IPlanetService, PlanetService>();
-            services.AddScoped<SWAPIClient>();
+            services.AddScoped<IPlanetRepository, PlanetRepository>();
         }
     }
 }

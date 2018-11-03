@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using JediGuide.Data.Context;
-using JediGuide.Models.Entities.Base;
+using JediGuide.Core.Entities.Base;
 using Microsoft.EntityFrameworkCore;
 
 namespace JediGuide.Data.Repository.Base

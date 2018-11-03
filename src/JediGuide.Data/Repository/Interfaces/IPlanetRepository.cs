@@ -1,5 +1,5 @@
 using JediGuide.Data.Repository.Base;
-using JediGuide.Models.Entities;
+using JediGuide.Core.Entities;
 
 namespace JediGuide.Data.Repository.Interfaces
 {

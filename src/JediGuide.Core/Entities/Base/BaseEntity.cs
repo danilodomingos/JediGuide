@@ -1,4 +1,4 @@
-namespace JediGuide.Models.Entities.Base
+namespace JediGuide.Core.Entities.Base
 {
     public class BaseEntity
     {

@@ -1,4 +1,4 @@
-using JediGuide.Models.Entities;
+using JediGuide.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -14,6 +14,14 @@ namespace JediGuide.Data.Mappings
 
             builder.Property(x => x.Name)
                 .HasMaxLength(30)
+                .IsRequired();
+
+            builder.Property(x => x.Terrain)
+                .HasMaxLength(255)
+                .IsRequired();
+            
+            builder.Property(x => x.Wheater)
+                .HasMaxLength(255)
                 .IsRequired();
         }
     }

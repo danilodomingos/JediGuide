@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using JediGuide.Models.Entities.Base;
+using JediGuide.Core.Entities.Base;
 
 namespace JediGuide.Service.Interfaces
 {

@@ -1,7 +1,7 @@
 using JediGuide.Data.Context;
 using JediGuide.Data.Repository.Base;
 using JediGuide.Data.Repository.Interfaces;
-using JediGuide.Models.Entities;
+using JediGuide.Core.Entities;
 
 namespace JediGuide.Data.Repository
 {
