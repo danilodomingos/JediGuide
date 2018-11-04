@@ -4,6 +4,7 @@ using JediGuide.Data.Context;
 using JediGuide.Data.Repository;
 using JediGuide.Data.Repository.Interfaces;
 using JediGuide.Data.UOW;
+using JediGuide.Rest;
 using JediGuide.Service;
 using JediGuide.Service.Base;
 using JediGuide.Service.Interfaces;
@@ -20,9 +21,12 @@ namespace JediGuide.DI
             services.AddScoped<SWAPIClient>();
             services.AddScoped<JediGuideContext>();
 
+            services.AddSingleton(typeof(Result<>));
+
             services.AddScoped<IPlanetAppService, PlanetAppService>();
             services.AddScoped<IPlanetService, PlanetService>();
             services.AddScoped<IPlanetRepository, PlanetRepository>();
+
         }
     }
 }

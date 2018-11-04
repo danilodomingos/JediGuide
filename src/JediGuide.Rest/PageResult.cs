@@ -1,8 +1,10 @@
 namespace JediGuide.Rest
 {
-    public class PageResult
+    public class PageResult<T>
     {
-        public int StatusCode { get; set; }
-        public string Message { get; set; }
+        public int? Count { get; set; }
+        public string Next { get; set; }
+        public string Previous { get; set; }
+        public T[] Results { get; set; }
     }
 }

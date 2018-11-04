@@ -30,16 +30,17 @@ namespace JediGuide.Service
             if(planet.IsValid()){
 
                 var persisted = repository.FindBy(x => x.Name == planet.Name);
-                var onlineInfo = swapiClient.GetPlanets(planet.Name);
 
                 if(persisted != null)
                     throw new DomainException("Planeta já cadastrado.", 409);
 
-                if(onlineInfo == null || 
-                   onlineInfo.Result?.Count > 1)
-                        throw new DomainException("Planeta inexistente.", 404);
+                var onlineInfo = swapiClient.GetPlanets(planet.Name);
 
-                var movies = onlineInfo.Result.Results[0].Films;
+                if(onlineInfo == null || 
+                   onlineInfo.Page?.Results?.Length != 1)
+                        throw new DomainException("Planeta inexistente.", 404);if(planet.IsValid()){
+
+                var movies = onlineInfo.Page?.Results[0].Films;
                 planet.MoviesShowUp = movies.Count;
 
                 repository.Insert(planet);

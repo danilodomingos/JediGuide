@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using JediGuide.DI;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace JediGuide.API
 {
@@ -27,6 +28,12 @@ namespace JediGuide.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info() { Title = "JediGuide B2W", Description = "JediGuide B2W Documentation" });
+            });
+
 
             RegisterServices(services);
         }
@@ -45,6 +52,12 @@ namespace JediGuide.API
 
             app.UseHttpsRedirection();
             app.UseMvc();
+
+            app.UseSwagger();
+            app.UseSwaggerUI( c => {
+
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "JediGuide B2W");
+            });
         }
 
         private static void RegisterServices(IServiceCollection services)

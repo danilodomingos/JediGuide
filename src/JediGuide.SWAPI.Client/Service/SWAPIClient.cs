@@ -27,7 +27,7 @@ namespace JediGuide.SWAPI.Client.Service
                 new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public async Task<PaginatorResult<Planet>> GetPlanets(string name)
+        public PaginatorResult<Planet> GetPlanets(string name)
         {
             HttpResponseMessage response = null;
             var paginator = new PaginatorResult<Planet>();
@@ -35,16 +35,16 @@ namespace JediGuide.SWAPI.Client.Service
 
             try
             {
-                response = await httpClient.GetAsync(urlWithParam);
+                response = httpClient.GetAsync(urlWithParam).Result;
                 
                 if (response.IsSuccessStatusCode)
                 {
-                    var dados = await response.Content.ReadAsStringAsync();
-                    paginator = JsonConvert.DeserializeObject<PaginatorResult<Planet>>(dados);
+                    var dados = response.Content.ReadAsStringAsync().Result;
+                    paginator.Page = JsonConvert.DeserializeObject<PageResult<Planet>>(dados);
                 }
             }
             catch (Exception ex){
-                var msg = ex.Message;
+                paginator.Message = ex.Message;
                 //Implementar Log aqui.
 
             }

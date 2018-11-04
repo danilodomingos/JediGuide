@@ -5,8 +5,8 @@ namespace JediGuide.Application.IServices
 {
     public interface IPlanetAppService
     {
-        PageResult Insert(Planet planet);
-        PageResult Update(Planet planet);
-        PageResult Delete(int id);
+        Result<Planet> Insert(Planet planet);
+        Result<Planet> Update(Planet planet);
+        Result<Planet> Delete(int id);
     }
 }

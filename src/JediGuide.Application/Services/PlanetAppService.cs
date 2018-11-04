@@ -11,20 +11,20 @@ namespace JediGuide.Application.Services
     public class PlanetAppService : IPlanetAppService
     {
         private readonly IPlanetService service;
-        private readonly PageResult pageResult;
+        private readonly Result<Planet> pageResult;
 
-        public PlanetAppService(IPlanetService service, PageResult pageResult)
+        public PlanetAppService(IPlanetService service, Result<Planet> pageResult)
         {
             this.service = service;
             this.pageResult = pageResult;
         }
 
-        PageResult IPlanetAppService.Delete(int id)
+        Result<Planet> IPlanetAppService.Delete(int id)
         {
             throw new System.NotImplementedException();
         }
 
-        PageResult IPlanetAppService.Insert(Planet planet)
+        Result<Planet> IPlanetAppService.Insert(Planet planet)
         {
             try{
 
@@ -41,10 +41,9 @@ namespace JediGuide.Application.Services
             }
             
             return pageResult;
-            
         }
 
-        PageResult IPlanetAppService.Update(Planet planet)
+        Result<Planet> IPlanetAppService.Update(Planet planet)
         {
             throw new System.NotImplementedException();
         }
